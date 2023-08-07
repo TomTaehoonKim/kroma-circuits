@@ -594,20 +594,20 @@ impl<F: Field> BytecodeCircuitConfig<F> {
                     F::from(push_data_size),
                 )?;
 
-                // trace!(
-                // "bytecode.set_row({}): last:{} h:{:?} t:{:?} i:{:?} c:{:?} v:{:?} pdl:{} rlc:{:?}
-                // l:{:?} pds:{:?}", offset,
-                // offset == last_row_offset,
-                // code_hash,
-                // row.tag.get_lower_32(),
-                // row.index.get_lower_32(),
-                // row.is_code.get_lower_32(),
-                // row.value.get_lower_32(),
-                // push_data_left,
-                // value_rlc,
-                // length.get_lower_32(),
-                // push_data_size
-                // );
+                log::error!(
+                "bytecode.set_row({}): last:{} h:{:?} t:{:?} i:{:?} c:{:?} v:{:?} pdl:{} rlc:{:?}
+                l:{:?} pds:{:?}", offset,
+                offset.clone() == last_row_offset,
+                code_hash,
+                row.tag.get_lower_32(),
+                row.index.get_lower_32(),
+                row.is_code.get_lower_32(),
+                row.value.get_lower_32(),
+                push_data_left,
+                value_rlc,
+                length.get_lower_32(),
+                push_data_size
+                );
 
                 *offset += 1;
                 push_data_left = next_push_data_left
